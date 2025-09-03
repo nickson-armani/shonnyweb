@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Shonny — Home Improvement & Renovation</title>
+  <meta name="description" content="Shonny Home Improvement and Renovation — Building, Plastering, Painting, Plumbing, Tiling, Bathroom Remodeling, Roofing installation, repairs, pressure cleaning, waterproofing.">
+  <meta name="keywords" content="home renovation, roofing, painting, plumbing, bathroom remodeling, tiling, pressure cleaning">
+  <meta name="author" content="Shonny Home Improvement and Renovation">
+  <link rel="icon" href="https://via.placeholder.com/32x32?text=S" type="image/png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Styling -->
+  <style>
+    :root{
+      --brand-blue:#1a73e8;
+      --brand-accent:#ff7043;
+      --neutral-light:#f9fafb;
+      --neutral-dark:#1a1a1a;
+      --card:#ffffff;
+      --shadow:0 8px 24px rgba(0,0,0,0.08);
+      --radius:14px;
+      --maxw:1200px;
+    }
+
+    @media (prefers-color-scheme: dark){
+      :root{
+        --neutral-light:#121212;
+        --neutral-dark:#f0f0f0;
+        --card:#1e1e1e;
+        --shadow:0 8px 24px rgba(0,0,0,0.6);
+      }
+      body{background:var(--neutral-light);color:var(--neutral-dark)}
+      header{background:var(--card)}
+      footer{background:#000;color:var(--neutral-dark)}
+      .card{background:var(--card)}
+      .service-list li{background:#2a2a2a;color:var(--neutral-dark)}
+      .gallery p{color:#bbb}
+      nav a{color:var(--neutral-dark)}
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Roboto',sans-serif;color:var(--neutral-dark);background:var(--neutral-light);line-height:1.6}
+    h1,h2,h3{font-family:'Poppins',sans-serif;margin-bottom:12px;color:var(--neutral-dark)}
+    a{text-decoration:none;color:inherit}
+
+    header{background:var(--card);box-shadow:var(--shadow);padding:18px 0;position:sticky;top:0;z-index:100}
+    .topbar{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+    .brand{font-weight:700;font-size:22px;color:var(--brand-blue)}
+    nav{display:flex;gap:24px}
+    nav a{font-weight:600;color:var(--neutral-dark);position:relative;padding:6px 0}
+    nav a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--brand-blue);transition:width .3s}
+    nav a:hover::after{width:100%}
+    .cta{background:var(--brand-accent);color:#fff;padding:10px 18px;border-radius:8px;font-weight:600;box-shadow:var(--shadow);transition:transform .2s}
+    .cta:hover{transform:translateY(-2px)}
+
+    .hero{background:linear-gradient(135deg,var(--brand-blue),#3f51b5);color:#fff;text-align:center;padding:80px 20px;border-radius:0 0 var(--radius) var(--radius)}
+    .hero h1{font-size:clamp(32px,5vw,52px)}
+    .hero p{margin:16px auto;max-width:700px;font-size:18px}
+    .hero .actions{margin-top:28px;display:flex;gap:18px;justify-content:center}
+
+    .container{max-width:var(--maxw);margin:0 auto;padding:50px 20px}
+
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.8s ease,transform 0.8s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+    .card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .2s}
+    .card:hover{transform:translateY(-4px)}
+    .services h3{color:var(--brand-blue);margin-bottom:12px}
+    .service-list{list-style:none;display:grid;gap:10px}
+    .service-list li{background:var(--neutral-light);padding:12px;border-radius:8px;font-weight:500}
+
+    .gallery h2{color:var(--brand-blue);text-align:center}
+    .gallery p{text-align:center;margin-bottom:20px;color:#555}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .tile{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);cursor:pointer;}
+    .tile img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+    .tile:hover img{transform:scale(1.08)}
+
+    .more-btn{margin:30px auto 0;display:block;background:var(--brand-blue);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:600;cursor:pointer;box-shadow:var(--shadow);transition:background .2s}
+    .more-btn:hover{background:var(--brand-accent)}
+
+    .hidden{display:none}
+
+    .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:opacity .3s}
+    .lightbox.active{visibility:visible;opacity:1}
+    .lightbox img{max-width:90%;max-height:80%;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .lightbox-close{position:absolute;top:20px;right:30px;font-size:32px;color:#fff;cursor:pointer}
+
+    .contact{margin-top:50px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .contact .card{padding:30px}
+    .contact h3{color:var(--brand-blue)}
+    .contact-info p{margin:12px 0;display:flex;align-items:center;gap:10px;font-size:18px}
+    .contact-info svg{flex-shrink:0;fill:var(--brand-blue)}
+
+    footer{margin-top:60px;padding:24px;background:var(--neutral-dark);color:#fff;text-align:center;font-size:14px;border-radius:var(--radius) var(--radius) 0 0}
+    footer a{color:#fff;text-decoration:underline}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">Shonny</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="cta" href="#contact">Get a Quote</a>
+    </div>
+  </header>
+
+  <section class="hero reveal">
+    <h1>Shonny Home Improvement & Renovation</h1>
+    <p>Trusted professionals for building, plastering, painting, plumbing, tiling, bathroom remodeling, and roofing services.</p>
+    <div class="actions">
+      <a class="cta" href="#contact">Request a Quote</a>
+      <a class="cta" href="tel:+27659191726">Call Us</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <section id="services" class="reveal">
+      <div class="services">
+        <div class="card">
+          <h3>Home Services</h3>
+          <ul class="service-list">
+            <li>Building</li>
+            <li>Plastering</li>
+            <li>Painting</li>
+            <li>Plumbing</li>
+            <li>Tiling</li>
+            <li>Bathroom Remodeling</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Roofing Services</h3>
+          <ul class="service-list">
+            <li>Installation</li>
+            <li>Repair Leaks</li>
+            <li>Maintenance</li>
+            <li>Pressure Cleaning</li>
+            <li>Painting</li>
+            <li>Waterproofing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="gallery reveal">
+      <h2>Project Gallery</h2>
+      <p>Explore some of our completed projects.</p>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="tile"><img src="images/image-1.jpeg" alt="Project 1"></div>
+        <div class="tile"><img src="images/image-2.jpeg" alt="Project 2"></div>
+        <div class="tile"><img src="images/image-3.jpeg" alt="Project 3"></div>
+        <div class="tile"><img src="images/image-4.jpeg" alt="Project 4"></div>
+        <div class="tile"><img src="images/image-5.jpeg" alt="Project 5"></div>
+        <div class="tile"><img src="images/image-6.jpeg" alt="Project 6"></div>
+        <div class="tile hidden"><img src="images/image-7.jpeg" alt="Project 7"></div>
+        <div class="tile hidden"><img src="images/image-8.jpeg" alt="Project 8"></div>
+        <div class="tile hidden"><img src="images/image-9.jpeg" alt="Project 9"></div>
+      </div>
+      <button class="more-btn" id="moreBtn">Show More</button>
+    </section>
+
+    <section id="contact" class="contact reveal">
+      <div class="card contact-info">
+        <h3>Contact Us</h3>
+        <p><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.21 2.2z"/></svg> <a href="tel:+27694958168">069 495 8168</a> | <a href="tel:+27842713040">084 271 3040</a></p>
+        <p><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> <a href="mailto:tawandagiftmberi@gmail.com">tawandagiftmberi@gmail</a></p>
+        <p>We look forward to transforming your home or business with professional, high-quality service.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Shonny Home Improvement & Renovation — All Rights Reserved
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="Expanded project image" id="lightboxImg">
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Show more button
+    document.getElementById('moreBtn').addEventListener('click', function(){
+      const hiddenTiles = document.querySelectorAll('.gallery-grid .hidden');
+      hiddenTiles.forEach(tile => tile.classList.remove('hidden'));
+      this.style.display = 'none';
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery-grid .tile img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox){
+        lightbox.classList.remove('active');
+      }
+    });
+
+    // Scroll reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll(){
+      const windowHeight = window.innerHeight;
+      const revealPoint = 100;
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < windowHeight - revealPoint){
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
